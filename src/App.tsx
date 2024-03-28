@@ -1,11 +1,7 @@
-import { useState } from "react";
+import useCounter from "./custom-hooks/useCounter";
 
 function App() {
-  const [counter, setCounter] = useState<number>(0);
-
-  function handleClick(): void {
-    setCounter((prev) => prev + 1);
-  }
+  const { counter, handleClick } = useCounter();
 
   return (
     <>
