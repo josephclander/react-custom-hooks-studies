@@ -1,10 +1,18 @@
+import { useState } from "react";
+
 function App() {
+  const [counter, setCounter] = useState<number>(0);
+
+  function handleClick(): void {
+    setCounter((prev) => prev + 1);
+  }
+
   return (
     <>
       <div className="display">
-        <p>Button has been clicked 0 times</p>
+        <p>Button has been clicked {counter} times</p>
       </div>
-      <button>Click me</button>
+      <button onClick={handleClick}>Click me</button>
     </>
   );
 }
