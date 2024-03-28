@@ -4,7 +4,7 @@ const Counter = () => {
   const [count, increment] = useCounter();
 
   return (
-    <section className="container">
+    <section>
       <h2>useCounter()</h2>
       <div className="display">
         <p>Button has been clicked {count} times</p>
