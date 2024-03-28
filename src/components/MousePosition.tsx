@@ -13,7 +13,7 @@ const MousePosition = () => {
     return () => {
       document.removeEventListener("mousemove", (event) => {
         setXPos(event.offsetX);
-        setYPos(event.offsetX);
+        setYPos(event.offsetY);
       });
     };
   }, [xPos, yPos]);
