@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-export default function useCounter() {
-const [counter, setCounter] = useState<number>(0);
+export const useCounter = () => {
+  // removed '<number>' declaration as it's inferred
+  const [count, setCount] = useState(0);
+  const increment = () => setCount((prevCount) => prevCount + 1);
 
-  function handleClick(): void {
-    setCounter((prev) => prev + 1);
-  }
-
-  return {counter, handleClick}
-}
+  // by using 'as const' you tell typescript
+  // these values cannot be mutated
+  return [count, increment] as const;
+};

@@ -1,14 +1,14 @@
-import useCounter from "./custom-hooks/useCounter";
+import { useCounter } from "./custom-hooks/useCounter";
 
 function App() {
-  const { counter, handleClick } = useCounter();
+  const [count, increment] = useCounter();
 
   return (
     <>
       <div className="display">
-        <p>Button has been clicked {counter} times</p>
+        <p>Button has been clicked {count} times</p>
       </div>
-      <button onClick={handleClick}>Click me</button>
+      <button onClick={increment}>Click me</button>
     </>
   );
 }
