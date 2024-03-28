@@ -1,13 +1,13 @@
+// ./src/custom-hooks/useMousePosition.ts
 import { useEffect, useState } from "react";
 
 export const useMousePosition = () => {
-  const [xPos, setXPos] = useState<number | null>(null);
-  const [yPos, setYPos] = useState<number | null>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    // remembered to give the type of the event
     const handleMouseMove = (event: MouseEvent) => {
-      setXPos(event.offsetX);
-      setYPos(event.offsetY);
+      setPosition({ x: event.clientX, y: event.clientY });
     };
 
     document.addEventListener("mousemove", handleMouseMove);
@@ -21,5 +21,5 @@ export const useMousePosition = () => {
     // it's not based on logic in state.
   }, []);
 
-  return {xPos, yPos};
+  return position;
 };
