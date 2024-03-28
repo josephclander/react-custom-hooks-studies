@@ -5,18 +5,21 @@ const MousePosition = () => {
   const [yPos, setYPos] = useState<number | null>(null);
 
   useEffect(() => {
-    document.addEventListener("mousemove", (event) => {
+    const handleMouseMove = (event: MouseEvent) => {
       setXPos(event.offsetX);
-      setYPos(event.offsetX);
-    });
+      setYPos(event.offsetY);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      document.removeEventListener("mousemove", (event) => {
-        setXPos(event.offsetX);
-        setYPos(event.offsetY);
-      });
+      document.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [xPos, yPos]);
+    // removed xPos and yPos from dependency array
+    // the event listener is taking care of the values
+    // so even though the values change,
+    // it's not based on logic in state.
+  }, []);
 
   return (
     <section>
